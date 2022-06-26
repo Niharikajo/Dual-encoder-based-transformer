@@ -16,6 +16,33 @@
 `!python -u main_yformer.py --model yformer --data Battery --train_epochs 4 --attn prob --freq t --features S` </br>
 
 --------------------------------------------------------------------------------------------------------------
+## Denormalizing Test Data
+Code:
+```
+outputs= outputs.detach().cpu().numpy()
+outputs = outputs.reshape(-1,outputs.shape[-2])
+outputs = self.Data.inverse_transform(outputs)
+
+batch_y = batch_y.detach().cpu().numpy()
+batch_y = batch_y.reshape(-1,batch_y.shape[-2])
+#print('batch_y', batch_y.shape)
+batch_y = self.Data.inverse_transform(batch_y)
+
+pred = outputs
+true = batch_y
+
+preds.append(pred)
+trues.append(true)
+```
+
+The above code is included in exp_informer </br>
+Preds and trues are reshaped as follows before error metric calculation
+```
+preds = preds.reshape(-1, preds.shape[-1], 1)
+trues = trues.reshape(-1, trues.shape[-1], 1)
+```
+
+-----------------------------------------------------------------------------------------------------------------
 ## Code Documentation
 The following taable contains the list of parameters used :
 
