@@ -13,7 +13,10 @@
 • Mount the drive on google colab. </br>
 • Install any missing dependencies. </br>
 • Run the following python script </br>
-`!python -u main_yformer.py --model yformer --data Battery --train_epochs 4 --attn prob --freq t --features S` </br>
+``` python
+!python -u main_yformer.py --model yformer --data Battery --train_epochs 4 --attn prob --freq t --features S
+``` 
+</br>
 
 --------------------------------------------------------------------------------------------------------------
 ## Denormalizing Test Data
